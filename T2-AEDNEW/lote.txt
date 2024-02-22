@@ -1,0 +1,45 @@
+C;5;Administracao;H
+C;7;Medicina;B
+C;3;Engenharia Mecanica;E
+C;4;Letras;H
+C;1;Ciencia da Computacao;E
+C;2;Engenharia Eletrica;E
+C;6;Enfermagem;B
+D;6;Resistencia de Materiais;3;3
+D;4;Projeto e Analise de Algoritmos;1;3
+D;9;Gestao de Pessoas;5;4
+D;2;Linguagens Formais e Automatos;1;2
+D;3;Logica e Matematica Discreta;1;1
+D;8;Literatura Contemporanea;4;3
+D;5;Inteligencia Artificial;1;4
+D;10;Anatomia Humana;7;1
+D;1;Algoritmos e Estrutura de Dados;1;2
+D;7;Circuitos Eletricos;2;2
+D;11;Farmacologia;7;4
+P;4;Joaquim Almeida
+P;8;Euler
+P;5;Pedro Batista
+P;2;Jose dos Santos
+P;3;Carla Souza
+P;7;Einstein
+P;1;Joao da Silva
+P;6;Maria do Prado
+M;4;2023;7
+M;6;2023;1
+M;7;2023;5
+M;3;2023;2
+M;1;2023;8
+M;5;2023;7
+M;2;2023;2
+M;7;2022;4
+M;10;2022;7
+M;11;2022;3
+M;4;2022;3
+M;2;2022;3
+M;6;2022;1
+M;5;2022;8
+M;8;2022;3
+M;3;2022;2
+M;1;2022;6
+M;9;2022;1
+
