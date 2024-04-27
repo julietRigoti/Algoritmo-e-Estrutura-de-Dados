@@ -5,15 +5,20 @@
 #include <stdlib.h>
 
 #include "arqB.h"
+#include "produto.h"
 
 #define ORDEM 5
 typedef struct {
     int numChaves;
-    int chave[ORDEM];
-    int filho[ORDEM + 1]; //tente usar o filho[0] para fazer a lista encadeada no arquivo de indice
-    int arqDados[ORDEM]; 
-}arvB;
+    int chaves[ORDEM];
+    int filhos[ORDEM + 1]; //tente usar o filho[0] para fazer a lista encadeada no arquivo de indice
+    int ptDados[ORDEM]; 
+}arvoreB;
 
-int buscaInfo(int codProd, arqB * arqDados); 
+void imprimirInfo(arquivoB *arqIndice); 
+
+int buscaInfo(int *pos, int codProd, arquivoB * arqDIndice, int i); 
+
+void insereB(Produto p, arquivoB * arqDados, arquivoB *arqIndice, int *pos);
 
 #endif

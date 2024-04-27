@@ -1,5 +1,5 @@
-#ifndef ARQB_H
-#define ARQB_H
+#ifndef ARQuivoB_H
+#define ARQuivoB_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,36 +14,38 @@ typedef struct { //estrutura do arquivo
 typedef struct{
     FILE *f;
     cabecalho cab;
-}arqB;
+}arquivoB;
 
 // Função para ler o cabeçalho do arquivo binário
 // Pré-condição: 'bin' é um ponteiro válido para a estrutura do arquivo binário
 // Pós-condição: O cabeçalho do arquivo binário é lido e armazenado na estrutura 'bin'
-void lerCabecalho(arqB *bin);
+void lerCabecalho(arquivoB *bin);
 
 // Função para escrever o cabeçalho no arquivo binário
 // Pré-condição: 'bin' é um ponteiro válido para a estrutura do arquivo binário
 // Pós-condição: O cabeçalho é escrito no arquivo binário
-void escreveCabecalho(arqB *bin);
+void escreveCabecalho(arquivoB *bin);
 
 // Função para gravar dados em uma posição específica do arquivo binário
 // Pré-condição: 'dados' é um ponteiro válido para os dados a serem gravados, 'pos' é a posição no arquivo, 'tamanho' é o tamanho dos dados, 'bin' é um ponteiro válido para a estrutura do arquivo binário
 // Pós-condição: Os dados são gravados na posição especificada do arquivo binário
-void gravaDados(void *dados, int pos, size_t tamanho, arqB *bin);
+void gravaDados(void *dados, int pos, size_t tamanho, arquivoB *bin);
 
 // Função para ler dados de uma posição específica do arquivo binário
 // Pré-condição: 'dados' é um ponteiro válido para armazenar os dados lidos, 'pos' é a posição no arquivo, 'tamanho' é o tamanho dos dados, 'bin' é um ponteiro válido para a estrutura do arquivo binário
 // Pós-condição: Os dados são lidos da posição especificada do arquivo binário e armazenados em 'dados'
-void lerDados(void *dados, int pos, size_t tamanho, arqB *bin);
+void lerDados(void *dados, int pos, size_t tamanho, arquivoB *bin);
 
-//int saberPos(arqB * arq, void *dados);
+//int saberPos(arquivoB * arq, void *dados);
 
 // Função para abrir um arquivo binário
 // Pré-condição: 'nomeArq' é o nome do arquivo a ser aberto
 // Pós-condição: Retorna um ponteiro para a estrutura do arquivo binário associado ao arquivo aberto
-arqB *abrirArquivo(char *nomeArq);
+arquivoB *abrirArquivo(char *nomeArq);
 
 //Função para fechar um arquivo binario 
-void fechaArquivo(arqB *arq);
+void fechaArquivo(arquivoB *arq);
+
+void imprimirCabecalho(arquivoB *bin);
 
 #endif
