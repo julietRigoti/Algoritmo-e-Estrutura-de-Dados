@@ -31,9 +31,18 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="arqB.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="arqB.h" />
+		<Unit filename="arvore.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="arvore.h" />
 		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="menu.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="menu.h" />

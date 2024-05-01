@@ -1,0 +1,38 @@
+# depslib dependency file v1.0
+1714598801 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/main.c
+	"menu.h"
+
+1714598801 /home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/menu.h
+	<stdio.h>
+	<stdlib.h>
+	"arqB.h"
+	"produto.h"
+
+1714598801 /home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/arqB.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1714598801 /home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/produto.h
+	<stdio.h>
+	<stdlib.h>
+	"arqB.h"
+
+1714599347 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/arqB.c
+	"arqB.h"
+
+1714599379 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/arvore.c
+	"arvore.h"
+
+1714598801 /home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/arvore.h
+	<stdio.h>
+	<stdlib.h>
+	"arqB.h"
+	"produto.h"
+
+1714599411 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/menu.c
+	"menu.h"
+
+1714599438 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/produto.c
+	"produto.h"
+
