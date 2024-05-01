@@ -8,7 +8,7 @@ void imprimirCabecalho(arquivoB *bin){
 
 // Pré-condição: 'arq' é um ponteiro válido para a estrutura do arquivo binário
 // Pós-condição: O cabeçalho do arquivo binário é impresso no console
-void lerCabecalho(arquivoB* bin){ //não preciso modificar 
+void lerCabecalho(arquivoB* bin){ //não preciso modificar
     fseek(bin->f, 0, SEEK_SET);
     fread(&bin->cab, sizeof(cabecalho), 1, bin->f);
 }
@@ -39,7 +39,7 @@ void lerDados(void *dados, int pos, size_t tamanho, arquivoB *bin) {
 }
 
 /*int saberPos(arquivoB *arq, void *dados){
-   int pos; 
+   int pos;
    if (arq->cab.pos_livre == -1){
         pos = arq->cab.pos_topo;
         arq->cab.pos_topo++;

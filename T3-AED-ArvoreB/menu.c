@@ -5,27 +5,27 @@
 // Pós-condição: As informações do arquivo de texto são registradas na estrutura de dados
 /*void registroArqTXT(FILE *f, arqB * arqDados, arqB *arqIndice) {
     char linha[100];
-    Produto *p = (Produto *) malloc (sizeof(Produto)); 
+    Produto *p = (Produto *) malloc (sizeof(Produto));
     while (fgets(linha, sizeof(linha), f) != NULL) {
         char token;
         if (sscanf(linha, " %c", &token) == 1) {
-            if (token == 'I') {      
-                if (sscanf(linha, "I;%99[^;];%99[^;];%99[^;];%99[^;];%99[^;];%99[^;];%99[^\n]", p->codProd, p->nomeProd, p->marcaProd, p->categProd, p->estoque, p->preco ) == 7) { 
-                    inserirProdutoArv(p, arqDados, arqIndice); 
+            if (token == 'I') {
+                if (sscanf(linha, "I;%99[^;];%99[^;];%99[^;];%99[^;];%99[^;];%99[^;];%99[^\n]", p->codProd, p->nomeProd, p->marcaProd, p->categProd, p->estoque, p->preco ) == 7) {
+                    inserirProdutoArv(p, arqDados, arqIndice);
                 }
             } else if (token == 'A') {
-                
+
                 if (sscanf(linha, "A;%99[^;];%99[^;];%99[^;];%99[^\n]", ) ) {
-                    
+
                 }
             } else if(token == 'R'){
                 if(sscanf(linha, "R;%99[^;];%99[^\n]", ) ){
-                 
+
                 }
             }
         }
     }
-    free(p); 
+    free(p);
 }*/
 
 
@@ -92,31 +92,31 @@ void menu(){
                 fechaArquivo(arqIndiceProd);
                 exit(0);
             case 1:
-                cadastrarProduto(arqIndiceProd, arqDadosProd); 
+                cadastrarProduto(arqIndiceProd, arqDadosProd);
                 break;
             case 2:
-                
+
                 break;
             case 3:
-                
+
                 break;
             case 4:
-                
+
                 break;
             case 5:
                 //imprimirInfo(arqIndiceProd);
                 break;
             case 6:
-                
+
                 break;
             case 7:
-                
+
                 break;
             case 8:
-                
+
                 break;
             case 9:
-                
+
                 break;
             case 10:
                 /*carregarLote(arqDadosProd, arqIndiceProd);*/

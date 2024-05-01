@@ -12,12 +12,10 @@ typedef struct {
     int numChaves;
     int chaves[ORDEM];
     int filhos[ORDEM + 1]; //tente usar o filho[0] para fazer a lista encadeada no arquivo de indice
-    int ptDados[ORDEM]; 
+    int ptDados[ORDEM];
 }arvoreB;
 
-void imprimirInfo(arquivoB *arqIndice); 
-
-int buscaInfo(int *pos, int codProd, arquivoB * arqDIndice, int i); 
+int buscaInfo(int *pos, int codProd, arquivoB * arqDIndice, int i);
 
 void insereB(Produto p, arquivoB * arqDados, arquivoB *arqIndice, int *pos);
 

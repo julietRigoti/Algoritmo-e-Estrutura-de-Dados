@@ -43,7 +43,7 @@ void lerDados(void *dados, int pos, size_t tamanho, arquivoB *bin);
 // Pós-condição: Retorna um ponteiro para a estrutura do arquivo binário associado ao arquivo aberto
 arquivoB *abrirArquivo(char *nomeArq);
 
-//Função para fechar um arquivo binario 
+//Função para fechar um arquivo binario
 void fechaArquivo(arquivoB *arq);
 
 void imprimirCabecalho(arquivoB *bin);
