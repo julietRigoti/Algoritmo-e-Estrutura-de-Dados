@@ -13,26 +13,26 @@
 	<stdlib.h>
 	<string.h>
 
-1714598801 /home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/produto.h
+1714786896 /home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/produto.h
 	<stdio.h>
 	<stdlib.h>
 	"arqB.h"
+	"arvore.h"
 
 1714599347 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/arqB.c
 	"arqB.h"
 
-1714599379 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/arvore.c
+1714786498 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/arvore.c
 	"arvore.h"
 
-1714598801 /home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/arvore.h
+1714784960 /home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/arvore.h
 	<stdio.h>
 	<stdlib.h>
 	"arqB.h"
-	"produto.h"
 
-1714599411 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/menu.c
+1714786827 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/menu.c
 	"menu.h"
 
-1714599438 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/produto.c
+1714787243 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/produto.c
 	"produto.h"
 

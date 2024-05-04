@@ -46,6 +46,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="menu.h" />
+		<Unit filename="produto.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="produto.h" />
 		<Extensions />
 	</Project>

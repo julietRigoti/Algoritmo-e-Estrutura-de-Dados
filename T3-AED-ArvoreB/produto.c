@@ -7,34 +7,42 @@ void imprimirAux(Produto p){
     printf("-> A categoria do produto eh: %s\n", p.categProd);
     printf("-> O estoque tem %d unidades\n", p.estoque);
     printf("-> O preco unitario do produto eh: %s\n", p.preco);
-
 }
-/*
-void imprimirInfo(arquivoB *arqIndice){
-    int codUsuario = 0, *pos;
 
-    Produto *p = (Produto *) malloc(sizeof(Produto));
+void imprimirInOrdem(arquivoB *arqIndice, arquivoB *arqDados, int pos){
+    if(pos != -1){
+        arvoreB B; int i;
+        lerDados(&B, pos, sizeof(arvoreB), arqIndice);
+        for(i = 0; i < B.numChaves; i++){
+            imprimirInOrdem(arqIndice, arqDados, B.filhos[i]);
+            Produto p;
+            lerDados(&p, B.ptDados[i], sizeof(Produto), arqDados);
+            imprimirAux(p);
+        }
+        imprimirInOrdem(arqIndice, arqDados, B.filhos[i]);
+    }
+}
 
+void imprimirInfo(arquivoB *arqIndice, arquivoB *arqDados){
+    int codUsuario = 0;
+    Produto p;
     printf("Informe o codigo do produto que esta procurando: \n");
     scanf("%d", &codUsuario);
-
-
-}*/
+    imprimirCabecalho(arqIndice);
+    printf("\n");
+    imprimirCabecalho(arqDados);
+    int ptDado = busca(codUsuario, arqIndice, arqIndice->cab.pos_cabeca);
+    lerDados(&p, ptDado, sizeof(Produto), arqDados);
+    imprimirAux(p);
+}
 
 void inserirProdutoArv(Produto p, arquivoB * arqDados, arquivoB *arqIndice){
 
-    printf("\n\nAAAAAAa");
-
-    int *aux; //preciso de uma variavel para saber a posição da chave no vetor de chaves no arquivo
-
-    printf("\n\nAAAAAAa");
-
-    if(!buscaInfo(&aux, p.codProd, arqIndice, arqIndice->cab.pos_cabeca)){
-        printf("Inserir Produto na Arvore");
-        insereB(p, arqDados, arqIndice, &aux);
-    } else {
-        printf("Produto já cadastrado\n");
-    }
+    printf("Inserir Produto na Arvore\n");
+    gravaDados(&p, arqDados->cab.pos_topo, sizeof(Produto),arqDados);
+    insereB(p.codProd, arqDados, arqIndice);
+    arqDados->cab.pos_topo++;
+    escreveCabecalho(arqDados);
 }
 
 void cadastrarProduto(arquivoB * arqDados, arquivoB *arqIndice){
@@ -53,6 +61,6 @@ void cadastrarProduto(arquivoB * arqDados, arquivoB *arqIndice){
     printf("Informe o preco do produto:\n");
     scanf("%[^\n]%*c", p.preco);
 
-    imprimirAux(p);
+    //imprimirAux(p);
     inserirProdutoArv(p, arqDados, arqIndice);
 }

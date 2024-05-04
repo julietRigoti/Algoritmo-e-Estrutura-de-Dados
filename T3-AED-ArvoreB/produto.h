@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 #include "arqB.h"
+#include "arvore.h"
 
 typedef struct {
     int codProd; //na remocao, usa o codProd para fazer a lista encadeada
@@ -16,6 +17,10 @@ typedef struct {
 }Produto;
 
 void imprimirAux(Produto p);
+
+void imprimirInOrdem(arquivoB *arqIndice, arquivoB *arqDados, int pos);
+
+void imprimirInfo(arquivoB *arqIndice, arquivoB *arqDados);
 
 void cadastrarProduto(arquivoB * arqDados, arquivoB *arqIndice);
 

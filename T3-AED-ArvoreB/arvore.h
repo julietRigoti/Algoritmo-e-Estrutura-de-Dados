@@ -5,7 +5,6 @@
 #include <stdlib.h>
 
 #include "arqB.h"
-#include "produto.h"
 
 #define ORDEM 5
 typedef struct {
@@ -15,8 +14,10 @@ typedef struct {
     int ptDados[ORDEM];
 }arvoreB;
 
+int busca(int codUsuario, arquivoB* arqIndice, int posK);
+
 int buscaInfo(int *pos, int codProd, arquivoB * arqDIndice, int i);
 
-void insereB(Produto p, arquivoB * arqDados, arquivoB *arqIndice, int *pos);
+void insereB(int codProd, arquivoB * arqDados, arquivoB *arqIndice);
 
 #endif

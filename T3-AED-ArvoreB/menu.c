@@ -3,17 +3,18 @@
 // Função para registrar informações de um arquivo de texto em uma estrutura de dados
 // Pré-condição: O arquivo passado como argumento está aberto para leitura
 // Pós-condição: As informações do arquivo de texto são registradas na estrutura de dados
-/*void registroArqTXT(FILE *f, arqB * arqDados, arqB *arqIndice) {
-    char linha[100];
-    Produto *p = (Produto *) malloc (sizeof(Produto));
+void registroArqTXT(FILE *f, arquivoB *arqDados, arquivoB *arqIndice) {
+    char linha[200];
+    Produto p;
     while (fgets(linha, sizeof(linha), f) != NULL) {
         char token;
         if (sscanf(linha, " %c", &token) == 1) {
+        printf("token = %c\n", token);
             if (token == 'I') {
-                if (sscanf(linha, "I;%99[^;];%99[^;];%99[^;];%99[^;];%99[^;];%99[^;];%99[^\n]", p->codProd, p->nomeProd, p->marcaProd, p->categProd, p->estoque, p->preco ) == 7) {
-                    inserirProdutoArv(p, arqDados, arqIndice);
+                if(sscanf(linha, "I;%d;%[^;];%[^;];%[^;];%d;%[^;]", &p.codProd, p.nomeProd, p.marcaProd, p.categProd, &p.estoque, p.preco) == 6){
+                   inserirProdutoArv(p, arqDados, arqIndice);
                 }
-            } else if (token == 'A') {
+            } /*else if (token == 'A') {
 
                 if (sscanf(linha, "A;%99[^;];%99[^;];%99[^;];%99[^\n]", ) ) {
 
@@ -22,12 +23,10 @@
                 if(sscanf(linha, "R;%99[^;];%99[^\n]", ) ){
 
                 }
-            }
+            }*/
         }
     }
-    free(p);
-}*/
-
+}
 
 // Função para imprimir o menu
 // Pré-condição: Nenhuma
@@ -58,7 +57,7 @@ int loadFile(FILE* file){
 // Função para carregar informações de um arquivo em lote
 // Pré-condição: Nenhuma
 // Pós-condição: As informações do arquivo em lote são registradas na estrutura de dados
-/*void carregarLote(arqB * arqDados, arqB *arqIndice){
+void carregarLote(arquivoB *arqDados, arquivoB *arqIndice){
     FILE *fr;
     char path[50];
     do{
@@ -70,7 +69,7 @@ int loadFile(FILE* file){
     registroArqTXT(fr, arqDados, arqIndice);
     printf("\n");
     fclose(fr);
-}*/
+}
 
 // Função que exibe o menu e permite ao usuário escolher uma opção
 // Pré-condição: Nenhuma
@@ -82,8 +81,10 @@ void menu(){
     scanf("%d%*c", &choose);
     printf("\n");
 
-    arquivoB *arqDadosProd = abrirArquivo("../arqDadosProd");
-    arquivoB *arqIndiceProd = abrirArquivo("../arqIndiceProd");
+    arquivoB *arqDadosProd = abrirArquivo("../T3-AED-ArvoreB/arqDadosProd");
+    imprimirCabecalho(arqDadosProd);
+    arquivoB *arqIndiceProd = abrirArquivo("../T3-AED-ArvoreB/arqIndicesProd");
+    imprimirCabecalho(arqIndiceProd);
 
     while (choose >= 0 || choose <= 10) {
         switch (choose) {
@@ -92,7 +93,7 @@ void menu(){
                 fechaArquivo(arqIndiceProd);
                 exit(0);
             case 1:
-                cadastrarProduto(arqIndiceProd, arqDadosProd);
+                cadastrarProduto(arqDadosProd, arqIndiceProd);
                 break;
             case 2:
 
@@ -104,10 +105,10 @@ void menu(){
 
                 break;
             case 5:
-                //imprimirInfo(arqIndiceProd);
+                imprimirInfo(arqIndiceProd, arqDadosProd);
                 break;
             case 6:
-
+                imprimirInOrdem(arqIndiceProd, arqDadosProd, arqIndiceProd->cab.pos_cabeca);
                 break;
             case 7:
 
@@ -119,7 +120,7 @@ void menu(){
 
                 break;
             case 10:
-                /*carregarLote(arqDadosProd, arqIndiceProd);*/
+                carregarLote(arqDadosProd, arqIndiceProd);
                 break;
             default:
                 printf("Tente novamente!\n");
