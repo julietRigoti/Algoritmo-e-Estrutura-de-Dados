@@ -1,5 +1,90 @@
 #include "produto.h"
 
+/*void imprimirArvore(arquivoB *arqIndice){
+    int pos = arqIndice->cab.pos_cabeca;
+    if(pos == -1) return;
+
+    fila *f = cria_fila_vazia();
+    arvoreB B, C;
+
+    lerDados(&B, pos, sizeof(arvoreB), arqIndice);
+    for(int i = 0; i < B.numChaves; i++){
+        enqueue(f, B.chaves[i]);
+    }
+    enqueue(f, -1);
+    printf("[");
+    while(!vazia(f)){
+        printf("%d ", f->inicio->chave);
+        dequeue(f);
+
+        for(int i = 0; i <= B.numChaves; i++){
+            lerDados(&C, B.filhos[i], sizeof(arvoreB), arqIndice);
+            for(int j = 0; j < C.numChaves; j++)
+                enqueue(f, C.chaves[j]);
+        }
+        if(f->inicio->chave == -1){
+            printf("\n");
+            dequeue(f);
+            enqueue(f, -1);
+        }
+        if(f->inicio->chave == -1 && f->inicio->prox == NULL){
+            printf("]\n\n");
+            break;
+        }
+    }
+}*/
+
+// Função para obter o valor da posição atual na fila sem remover o elemento
+int front(fila *f) {
+    if (vazia(f)) {
+        printf("Erro: fila vazia!\n");
+        return -1; // Retorna um valor inválido caso a fila esteja vazia
+    }
+    return f->inicio->chave;
+}
+
+void imprimirArvore(arquivoB *arqIndice) {
+    int pos = arqIndice->cab.pos_cabeca;
+    if (pos == -1)
+        return;
+
+    fila *f = cria_fila_vazia();
+
+    // Enfileira a posição da raiz da árvore B
+    enqueue(f, pos);
+    enqueue(f, -1); // Marca o final do nível atual
+
+    while (!vazia(f)) {
+        int curr_pos = front(f); // Obtém a posição atual
+        dequeue(f); // Remove a posição atual da fila
+
+        if (curr_pos == -1) { // Verifica se é o final do nível
+            printf("\n");
+            if (!vazia(f)) {
+                enqueue(f, -1); // Marca o final do próximo nível
+            }
+        } else {
+            arvoreB B;
+            lerDados(&B, curr_pos, sizeof(arvoreB), arqIndice);
+
+            printf("[");
+            for (int i = 0; i < B.numChaves; i++) {
+                printf("%d ", B.chaves[i]);
+            }
+            printf("] ");
+
+            // Enfileira os filhos do nó atual
+            for (int i = 0; i <= B.numChaves; i++) {
+                if (B.filhos[i] != -1) {
+                    enqueue(f, B.filhos[i]);
+                }
+            }
+        }
+    }
+
+    //libera_fila(f); // Libera a memória da fila
+}
+
 void imprimirAux(Produto p){
     printf("-> O codigo do produto eh: %d\n", p.codProd);
     printf("-> O nome do produto eh: %s\n", p.nomeProd);

@@ -6,6 +6,7 @@
 
 #include "arqB.h"
 #include "arvore.h"
+#include "fila.h"
 
 typedef struct {
     int codProd; //na remocao, usa o codProd para fazer a lista encadeada
@@ -15,6 +16,8 @@ typedef struct {
     char categProd[50];
     char marcaProd[30];
 }Produto;
+
+void imprimirArvore(arquivoB *arqIndice);
 
 void imprimirAux(Produto p);
 

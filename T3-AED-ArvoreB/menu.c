@@ -111,7 +111,7 @@ void menu(){
                 imprimirInOrdem(arqIndiceProd, arqDadosProd, arqIndiceProd->cab.pos_cabeca);
                 break;
             case 7:
-
+                 imprimirArvore(arqIndiceProd);
                 break;
             case 8:
 
