@@ -9,17 +9,25 @@ void registroArqTXT(FILE *f, arquivoB *arqDados, arquivoB *arqIndice) {
     while (fgets(linha, sizeof(linha), f) != NULL) {
         char token;
         if (sscanf(linha, " %c", &token) == 1) {
-        printf("token = %c\n", token);
+            printf("token = %c\n", token);
             if (token == 'I') {
                 if(sscanf(linha, "I;%d;%[^;];%[^;];%[^;];%d;%[^;]", &p.codProd, p.nomeProd, p.marcaProd, p.categProd, &p.estoque, p.preco) == 6){
                    inserirProdutoArv(p, arqDados, arqIndice);
                 }
-            } /*else if (token == 'A') {
-
-                if (sscanf(linha, "A;%99[^;];%99[^;];%99[^;];%99[^\n]", ) ) {
-
+            } else if (token == 'A') {
+                if (sscanf(linha, "A;%d;%d;%[^;]", &p.codProd, &p.estoque, p.preco) <= 3) {
+                    if(sscanf(linha, "A;%d;%d;%[^\n] ", &p.codProd, &p.estoque, p.preco) == 3){
+                        printf("mudança geral\n");
+                        atualizarInfoText(p.codProd, p.estoque, p.preco, 2, arqIndice, arqDados);
+                    } else if (sscanf(linha, "A;%d;%[^;];", &p.codProd, &p.estoque) == 2){
+                        printf("muda só estoque\n");
+                        atualizarInfoText(p.codProd, p.estoque, p.preco, 0, arqIndice, arqDados);
+                    } else if (sscanf(linha, "A;%d;;%s", &p.codProd, p.preco) == 2){
+                        printf("muda só preço\n");
+                        atualizarInfoText(p.codProd, p.estoque, p.preco, 1, arqIndice, arqDados);
+                    }
                 }
-            } else if(token == 'R'){
+            } /*else if(token == 'R'){
                 if(sscanf(linha, "R;%99[^;];%99[^\n]", ) ){
 
                 }
@@ -82,9 +90,9 @@ void menu(){
     printf("\n");
 
     arquivoB *arqDadosProd = abrirArquivo("../T3-AED-ArvoreB/arqDadosProd");
-    imprimirCabecalho(arqDadosProd);
+    //imprimirCabecalho(arqDadosProd);
     arquivoB *arqIndiceProd = abrirArquivo("../T3-AED-ArvoreB/arqIndicesProd");
-    imprimirCabecalho(arqIndiceProd);
+    //imprimirCabecalho(arqIndiceProd);
 
     while (choose >= 0 || choose <= 10) {
         switch (choose) {
@@ -96,13 +104,13 @@ void menu(){
                 cadastrarProduto(arqDadosProd, arqIndiceProd);
                 break;
             case 2:
-
+                    //falta remocao
                 break;
             case 3:
-
+                atualizarInfo(arqIndiceProd, arqDadosProd, 0);
                 break;
             case 4:
-
+                atualizarInfo(arqIndiceProd, arqDadosProd, 1);
                 break;
             case 5:
                 imprimirInfo(arqIndiceProd, arqDadosProd);
@@ -114,10 +122,10 @@ void menu(){
                  imprimirArvore(arqIndiceProd);
                 break;
             case 8:
-
+                    //falta imprimir lista de livres do arquivo de indices
                 break;
             case 9:
-
+                    //imprimir lista de livres do arquivo de dados: i
                 break;
             case 10:
                 carregarLote(arqDadosProd, arqIndiceProd);

@@ -1,38 +1,51 @@
 #include "produto.h"
 
-/*void imprimirArvore(arquivoB *arqIndice){
-    int pos = arqIndice->cab.pos_cabeca;
-    if(pos == -1) return;
+void atualizarInfoText(int codProd, int estoque, char preco[], int op, arquivoB * arqIndice, arquivoB * arqDados){
 
-    fila *f = cria_fila_vazia();
-    arvoreB B, C;
+    int ptDado = busca(codProd, arqIndice, arqIndice->cab.pos_cabeca);
+    Produto a;
+    if(ptDado != -1){
 
-    lerDados(&B, pos, sizeof(arvoreB), arqIndice);
-    for(int i = 0; i < B.numChaves; i++){
-        enqueue(f, B.chaves[i]);
+        lerDados(&a, ptDado, sizeof(Produto), arqDados);
+        if(op == 0){
+            a.estoque = estoque;
+        } else if (op == 1){
+            strcpy(a.preco, preco);
+        } else {
+            a.estoque = estoque;
+            strcpy(a.preco, preco);
+        }
+        gravaDados(&a, ptDado, sizeof(Produto), arqDados);
     }
-    enqueue(f, -1);
-    printf("[");
-    while(!vazia(f)){
-        printf("%d ", f->inicio->chave);
-        dequeue(f);
+}
 
-        for(int i = 0; i <= B.numChaves; i++){
-            lerDados(&C, B.filhos[i], sizeof(arvoreB), arqIndice);
-            for(int j = 0; j < C.numChaves; j++)
-                enqueue(f, C.chaves[j]);
-        }
-        if(f->inicio->chave == -1){
-            printf("\n");
-            dequeue(f);
-            enqueue(f, -1);
-        }
-        if(f->inicio->chave == -1 && f->inicio->prox == NULL){
-            printf("]\n\n");
-            break;
-        }
+void atualizarInfo(arquivoB *arqIndice, arquivoB *arqDados, int op){
+    int codUsuario = 0;
+    int estoqueNovo;
+    char precoNovo[10];
+    Produto p;
+
+    printf("Informe o codigo do produto que esta procurando: \n");
+    scanf("%d", &codUsuario);
+
+    int ptDado = busca(codUsuario, arqIndice, arqIndice->cab.pos_cabeca);
+
+    if(ptDado != -1){
+        lerDados(&p, ptDado, sizeof(Produto), arqDados);
+        if(op == 1) {
+            printf("Informe o novo estoque deste produto: \n");
+            scanf("%d", &estoqueNovo);
+            p.estoque = estoqueNovo;
+        } else if (op == 0){
+            printf("Informe o novo preco deste produto: \n");
+            scanf("%s%*c", precoNovo);
+            strcpy(p.preco, precoNovo);
+            }
+        gravaDados(&p, ptDado, sizeof(Produto), arqDados);
+    } else {
+        printf("Nao existe esse produto cadastrado...\n");
     }
-}*/
+}
 
 // Função para obter o valor da posição atual na fila sem remover o elemento
 int front(fila *f) {
@@ -81,8 +94,6 @@ void imprimirArvore(arquivoB *arqIndice) {
             }
         }
     }
-
-    //libera_fila(f); // Libera a memória da fila
 }
 
 void imprimirAux(Produto p){
@@ -113,9 +124,6 @@ void imprimirInfo(arquivoB *arqIndice, arquivoB *arqDados){
     Produto p;
     printf("Informe o codigo do produto que esta procurando: \n");
     scanf("%d", &codUsuario);
-    imprimirCabecalho(arqIndice);
-    printf("\n");
-    imprimirCabecalho(arqDados);
     int ptDado = busca(codUsuario, arqIndice, arqIndice->cab.pos_cabeca);
     lerDados(&p, ptDado, sizeof(Produto), arqDados);
     imprimirAux(p);
@@ -123,7 +131,6 @@ void imprimirInfo(arquivoB *arqIndice, arquivoB *arqDados){
 
 void inserirProdutoArv(Produto p, arquivoB * arqDados, arquivoB *arqIndice){
 
-    printf("Inserir Produto na Arvore\n");
     gravaDados(&p, arqDados->cab.pos_topo, sizeof(Produto),arqDados);
     insereB(p.codProd, arqDados, arqIndice);
     arqDados->cab.pos_topo++;
@@ -146,6 +153,5 @@ void cadastrarProduto(arquivoB * arqDados, arquivoB *arqIndice){
     printf("Informe o preco do produto:\n");
     scanf("%[^\n]%*c", p.preco);
 
-    //imprimirAux(p);
     inserirProdutoArv(p, arqDados, arqIndice);
 }

@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "arqB.h"
 #include "arvore.h"
@@ -16,6 +17,10 @@ typedef struct {
     char categProd[50];
     char marcaProd[30];
 }Produto;
+
+void atualizarInfoText(int codProd, int estoque, char preco[], int op, arquivoB * arqIndice, arquivoB * arqDados);
+
+void atualizarInfo(arquivoB *arqIndice, arquivoB *arqDados, int op);
 
 void imprimirArvore(arquivoB *arqIndice);
 

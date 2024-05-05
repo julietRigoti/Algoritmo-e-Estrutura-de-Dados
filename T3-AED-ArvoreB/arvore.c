@@ -31,12 +31,10 @@ void imprimirInfoB(arvoreB B){
 }
 
 int busca(int codUsuario, arquivoB* arqIndice, int posK){
-    printf("posK = %d\n", posK);
     if(posK == -1) return -1;
 
     arvoreB B;
     lerDados(&B, posK, sizeof(arvoreB), arqIndice);
-    imprimirInfoB(B);
 
     int i = 0;
     while(i < B.numChaves && B.chaves[i] < codUsuario) i++;
@@ -57,7 +55,6 @@ int buscaInfo(int *aux, int codProd, arquivoB * arqIndice, int pos){
                 break; //codProd pode estar na subarvore filho
         }
     }
-    //imprimirInfoB(B);
     return 0;
 }
 
@@ -77,15 +74,12 @@ void adicionaDireita(arvoreB *B, int *pos, int codProd, int k, int novoFilho){
 int split(int pos, int *m, int *ptDado, arquivoB *arqIndice){
     arvoreB C, B;
     lerDados(&B, pos, sizeof(arvoreB), arqIndice);
-    //imprimirInfoB(B);
 
     int posNova = arqIndice->cab.pos_topo;
 
     int q = B.numChaves/2; // 5/2 = 2
-    printf("q = %d\n", q);
     C.numChaves = B.numChaves - q - 1; //5 - 2 - 1 = 2
     B.numChaves = q;
-    printf("B.numChaves = %d\n", B.numChaves);
     *m = B.chaves[q]; //chave mediana
     *ptDado = B.ptDados[q];
     C.filhos[0] = B.filhos[q+1];
@@ -115,25 +109,18 @@ void insereAux(int codProd, arquivoB *arqIndice, int dadosTopo, int indicePos){
     int aux = 0;
         //preciso de uma variavel para saber a posição da chave no vetor de chaves no arquivo
     if(!buscaInfo(&aux, codProd, arqIndice, indicePos)){
-        printf("\naux = %d\n", aux);
         if (ehFolha(&B)){
            adicionaDireita(&B, &aux, codProd, dadosTopo, -1);
         } else {
             insereAux(codProd, arqIndice, dadosTopo, B.filhos[aux]);
             lerDados(&L, B.filhos[aux], sizeof(arvoreB), arqIndice);
-            printf("Pos recursão\n");
-           // imprimirInfoB(L);
             if(overflow(L.numChaves)){
-                printf("Pos segunda verificacao do overflow\n");
-                //imprimirInfoB(L);
-                printf("\n\n");
                 int chaveMed, ptDado;
                  int posNo = split(B.filhos[aux], &chaveMed, &ptDado, arqIndice);
                  adicionaDireita(&B, &aux, chaveMed, ptDado, posNo);
             }
         }
     }
-    printf("\n\n");
     gravaDados(&B, indicePos, sizeof(arvoreB), arqIndice);
 
    /* arvoreB L;
@@ -146,7 +133,6 @@ void insereB(int codProd, arquivoB * arqDados, arquivoB *arqIndice){
     arvoreB B;
     arvoreB L;
     if (arqIndice->cab.pos_cabeca == -1){
-        printf("Primeira inserção\n");
         B.numChaves = 1;
         B.chaves[0] = codProd;
         B.ptDados[0] = arqDados->cab.pos_topo;
@@ -166,7 +152,6 @@ void insereB(int codProd, arquivoB * arqDados, arquivoB *arqIndice){
         lerDados(&B, arqIndice->cab.pos_cabeca, sizeof(arvoreB), arqIndice);
 
         if(overflow(B.numChaves)){ //verifica se o nó está cheio
-            //printf("Entrou no overflow\n");
             int chaveMed, ptDado;
             int posNo = split(arqIndice->cab.pos_cabeca, &chaveMed, &ptDado, arqIndice);
 
@@ -187,7 +172,7 @@ void insereB(int codProd, arquivoB * arqDados, arquivoB *arqIndice){
             arqIndice->cab.pos_cabeca = arqIndice->cab.pos_topo; //possiveis mudanças
             arqIndice->cab.pos_topo++;
             escreveCabecalho(arqIndice);
-            imprimirCabecalho(arqIndice);
+            //imprimirCabecalho(arqIndice);
         }
     }
     /*for(int i = 0; i < arqIndice->cab.pos_topo; i++){

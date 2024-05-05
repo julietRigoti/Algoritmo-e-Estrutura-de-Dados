@@ -13,9 +13,10 @@
 	<stdlib.h>
 	<string.h>
 
-1714864892 /home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/produto.h
+1714872949 /home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/produto.h
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	"arqB.h"
 	"arvore.h"
 	"fila.h"
@@ -23,7 +24,7 @@
 1714599347 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/arqB.c
 	"arqB.h"
 
-1714786498 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/arvore.c
+1714922229 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/arvore.c
 	"arvore.h"
 
 1714784960 /home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/arvore.h
@@ -31,10 +32,10 @@
 	<stdlib.h>
 	"arqB.h"
 
-1714862972 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/menu.c
+1714924939 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/menu.c
 	"menu.h"
 
-1714864783 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/produto.c
+1714872998 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/produto.c
 	"produto.h"
 
 1714864784 source:/home/juliet/Documents/CC/Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB/fila.c
