@@ -1,5 +1,5 @@
-#ifndef ARQuivoB_H
-#define ARQuivoB_H
+#ifndef ARQB_H
+#define ARQB_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -36,16 +36,14 @@ void gravaDados(void *dados, int pos, size_t tamanho, arquivoB *bin);
 // Pós-condição: Os dados são lidos da posição especificada do arquivo binário e armazenados em 'dados'
 void lerDados(void *dados, int pos, size_t tamanho, arquivoB *bin);
 
-//int saberPos(arquivoB * arq, void *dados);
+//Função para fechar um arquivo binario
+//Pré-condição: 'arq' é o nome do arquivo a ser fechado
+//Pós-condição: o arquivo é fechado
+void fechaArquivo(arquivoB *arq);
 
 // Função para abrir um arquivo binário
 // Pré-condição: 'nomeArq' é o nome do arquivo a ser aberto
 // Pós-condição: Retorna um ponteiro para a estrutura do arquivo binário associado ao arquivo aberto
 arquivoB *abrirArquivo(char *nomeArq);
-
-//Função para fechar um arquivo binario
-void fechaArquivo(arquivoB *arq);
-
-void imprimirCabecalho(arquivoB *bin);
 
 #endif

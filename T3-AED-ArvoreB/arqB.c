@@ -1,11 +1,5 @@
 #include "arqB.h"
 
-void imprimirCabecalho(arquivoB *bin){
-    printf("cabeça = %d\n", bin->cab.pos_cabeca);
-    printf("topo = %d\n", bin->cab.pos_topo);
-    printf("livre = %d\n", bin->cab.pos_livre);
-}
-
 // Pré-condição: 'arq' é um ponteiro válido para a estrutura do arquivo binário
 // Pós-condição: O cabeçalho do arquivo binário é impresso no console
 void lerCabecalho(arquivoB* bin){ //não preciso modificar
@@ -38,18 +32,12 @@ void lerDados(void *dados, int pos, size_t tamanho, arquivoB *bin) {
     fread(dados, tamanho, 1, bin->f);
 }
 
-/*int saberPos(arquivoB *arq, void *dados){
-   int pos;
-   if (arq->cab.pos_livre == -1){
-        pos = arq->cab.pos_topo;
-        arq->cab.pos_topo++;
-   } else {
-        pos = arq->cab.pos_livre;
-        lerDados(&dados, pos, sizeof(void *), arq);
-   }
-    escreveCabecalho(arq);
-    return pos;
-}*/
+//Função para fechar um arquivo binario
+//Pré-condição: 'arq' é o nome do arquivo a ser fechado
+//Pós-condição: o arquivo é fechado
+void fechaArquivo(arquivoB * arq){
+    fclose(arq->f);
+}
 
 // Função para abrir um arquivo binário
 // Pré-condição: 'nomeArq' é o nome do arquivo a ser aberto
@@ -67,8 +55,4 @@ arquivoB *abrirArquivo(char * nomeArq){
         lerCabecalho(cab);
     }
     return cab;
-}
-
-void fechaArquivo(arquivoB * arq){
-    fclose(arq->f);
 }

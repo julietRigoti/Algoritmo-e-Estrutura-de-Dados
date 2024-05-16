@@ -9,29 +9,25 @@ void registroArqTXT(FILE *f, arquivoB *arqDados, arquivoB *arqIndice) {
     while (fgets(linha, sizeof(linha), f) != NULL) {
         char token;
         if (sscanf(linha, " %c", &token) == 1) {
-            printf("token = %c\n", token);
             if (token == 'I') {
                 if(sscanf(linha, "I;%d;%[^;];%[^;];%[^;];%d;%[^;]", &p.codProd, p.nomeProd, p.marcaProd, p.categProd, &p.estoque, p.preco) == 6){
                    inserirProdutoArv(p, arqDados, arqIndice);
                 }
             } else if (token == 'A') {
                 if (sscanf(linha, "A;%d;%d;%[^;]", &p.codProd, &p.estoque, p.preco) <= 3) {
-                    if(sscanf(linha, "A;%d;%d;%[^\n] ", &p.codProd, &p.estoque, p.preco) == 3){
-                        printf("mudança geral\n");
+                    if(sscanf(linha, "A;%d;%d;%s ", &p.codProd, &p.estoque, p.preco) == 3){
                         atualizarInfoText(p.codProd, p.estoque, p.preco, 2, arqIndice, arqDados);
-                    } else if (sscanf(linha, "A;%d;%[^;];", &p.codProd, &p.estoque) == 2){
-                        printf("muda só estoque\n");
+                    } else if (sscanf(linha, "A;%d;%d;", &p.codProd, &p.estoque) == 2){ //ARRUMAR
                         atualizarInfoText(p.codProd, p.estoque, p.preco, 0, arqIndice, arqDados);
                     } else if (sscanf(linha, "A;%d;;%s", &p.codProd, p.preco) == 2){
-                        printf("muda só preço\n");
                         atualizarInfoText(p.codProd, p.estoque, p.preco, 1, arqIndice, arqDados);
                     }
                 }
-            } /*else if(token == 'R'){
-                if(sscanf(linha, "R;%99[^;];%99[^\n]", ) ){
-
+            } else if(token == 'R'){
+                if(sscanf(linha, "R;%d", &p.codProd) == 1){
+                    removeProdutoAux(p.codProd, arqIndice, arqDados);
                 }
-            }*/
+            }
         }
     }
 }
@@ -89,46 +85,44 @@ void menu(){
     scanf("%d%*c", &choose);
     printf("\n");
 
-    arquivoB *arqDadosProd = abrirArquivo("../T3-AED-ArvoreB/arqDadosProd");
-    //imprimirCabecalho(arqDadosProd);
-    arquivoB *arqIndiceProd = abrirArquivo("../T3-AED-ArvoreB/arqIndicesProd");
-    //imprimirCabecalho(arqIndiceProd);
+    arquivoB *arqDados = abrirArquivo("../T3-AED-ArvoreB/arqDados");
+    arquivoB *arqIndice = abrirArquivo("../T3-AED-ArvoreB/arqIndices");
 
     while (choose >= 0 || choose <= 10) {
         switch (choose) {
             case 0:
-                fechaArquivo(arqDadosProd);
-                fechaArquivo(arqIndiceProd);
+                fechaArquivo(arqDados);
+                fechaArquivo(arqIndice);
                 exit(0);
             case 1:
-                cadastrarProduto(arqDadosProd, arqIndiceProd);
+                cadastrarProduto(arqDados, arqIndice);
                 break;
             case 2:
-                    //falta remocao
+                removerProduto(arqDados, arqIndice);
                 break;
             case 3:
-                atualizarInfo(arqIndiceProd, arqDadosProd, 0);
+                atualizarInfo(arqIndice, arqDados, 0);
                 break;
             case 4:
-                atualizarInfo(arqIndiceProd, arqDadosProd, 1);
+                atualizarInfo(arqIndice, arqDados, 1);
                 break;
             case 5:
-                imprimirInfo(arqIndiceProd, arqDadosProd);
+                imprimirInfo(arqIndice, arqDados);
                 break;
             case 6:
-                imprimirInOrdem(arqIndiceProd, arqDadosProd, arqIndiceProd->cab.pos_cabeca);
+                imprimirInOrdem(arqIndice, arqDados, arqIndice->cab.pos_cabeca);
                 break;
             case 7:
-                 imprimirArvore(arqIndiceProd);
+                 imprimirArvore(arqIndice);
                 break;
             case 8:
-                    //falta imprimir lista de livres do arquivo de indices
+                imprimirLivreIndice(arqIndice);
                 break;
             case 9:
-                    //imprimir lista de livres do arquivo de dados: i
+                imprimirLivreDados(arqDados);
                 break;
             case 10:
-                carregarLote(arqDadosProd, arqIndiceProd);
+                carregarLote(arqDados, arqIndice);
                 break;
             default:
                 printf("Tente novamente!\n");
