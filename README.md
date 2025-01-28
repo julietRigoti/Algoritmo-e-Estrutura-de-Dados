@@ -1,7 +1,5 @@
 # Algoritmo e Estrutura de Dados 
 
-# Algoritmo e Estrutura de Dados
-
 Este repositório contém implementações de diversos algoritmos e estruturas de dados fundamentais.
 
 ## Conteúdo
@@ -16,8 +14,8 @@ Este repositório contém implementações de diversos algoritmos e estruturas d
     ```sh
     git clone https://github.com/julietRigoti/Algoritmo-e-Estrutura-de-Dados.git
     ```
-Navegue até o diretório do projeto:
+2. Navegue até o diretório do projeto:
     ```sh
     cd Algoritmo-e-Estrutura-de-Dados
     ```
-3. Compile e execute os exemplos conforme as instruções específicas de cada trabalho
+3. Compile e execute.

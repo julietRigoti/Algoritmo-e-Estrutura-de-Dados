@@ -52,4 +52,4 @@ Este repositório contém funções para gerenciar cursos, disciplinas, professo
     ```sh
     cd Algoritmo-e-Estrutura-de-Dados/T1-AED-Lista
     ```
-3. Siga as instruções específicas de cada função para cadastrar, remover ou visualizar informações no sistema.
+3. Compile e execute.

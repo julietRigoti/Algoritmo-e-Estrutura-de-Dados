@@ -45,4 +45,4 @@ Este repositório contém a implementação de uma Árvore B, uma estrutura de d
    ```sh
    cd Algoritmo-e-Estrutura-de-Dados/T3-AED-ArvoreB
    ```
-3. Siga as instruções específicas de cada função para cadastrar, remover ou visualizar informações no sistema.
+3. Compile e execute.
